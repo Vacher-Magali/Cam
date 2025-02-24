@@ -38,6 +38,32 @@
     justify-content: center;
     align-items: center;
   }
+  .content {
+    /* occupe tout l'espace sous la nav */
+    flex: 1; 
+  
+    /* On centre verticalement et horizontalement */
+    display: flex;
+    flex-direction: column; /* si tu veux empiler <h2> et <p> */
+    justify-content: center; 
+    align-items: center; 
+  
+    /* Optionnel : texte centré */
+    text-align: center;
+    /* Petite marge intérieure ou non, selon tes goûts */
+    padding: 30px;
+  }
+
+  .content p {
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #0c0101;
+    margin-bottom: 20px;
+    font-size: xx-large;
+    border-radius: 8px;
+    
+  }
+  
   
   /* Barre de navigation (nav) */
   nav {
@@ -79,6 +105,13 @@
   nav .btn-enter:hover {
     background-color: var(--button-hover-color);
   }
+
+  div {
+    align-items: center;
+    justify-content: center;
+
+  }
+
   main {
     flex: 1;
     display: flex;

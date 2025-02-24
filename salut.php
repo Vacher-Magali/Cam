@@ -29,7 +29,7 @@ $selectedItems = $_SESSION['selectedItems'] ?? [];
                 <?php endforeach; ?>
             </ul>
         <?php else: ?>
-            <p>Aucun élément sélectionné.</p>
+            <p>Bravo tu n'as rien séléctionner looser</p>
         <?php endif; ?>
     </div>
   </div>
