@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Barre de navigation */
+  nav {
+    background-color: #702b3d;
+    padding: 10px;
+  }
+  
+  /* Bouton/lien retour accueil dans la nav */
+  .btn-return {
+    text-decoration: none;
+    color: #ea0707;
+    background-color: #070000;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  .btn-return:hover {
+    background-color: #e36b10;
+  }
+  body{
+    background: url(image/droite.jpg);
+  }
+  
+  /* Titre principal */
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #702b3d;
+  }
+
+  /* Conteneur de la liste, encadré en rouge */
+  .red-border {
+    border: 2px solid #702b3d;      /* bordure rouge */
+    padding: 20px;              /* marge interne */
+    width: 30%;                 /* largeur à 50% de la page */
+    margin: 0 auto;             /* centre le bloc horizontalement */
+    border-radius: 8px;         /* angles arrondis */
+
+}
+    label{
+        font-family: 'atma',serif;
+        color: #c70808;
+}  
+  /* Bouton "Valider" */
+  .btn-validate {
+    display: block;             /* pour que margin auto fonctionne */
+    margin: 20px auto;          /* centre le bouton sous la liste */
+    padding: 10px 16px;
+    background-color: #0a0000;
+    color: #c70808;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .btn-validate:hover {
+    background-color: #e36b10;
+  }
+  
+  /* Zone d'affichage des éléments sélectionnés */
+  .selected-items {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #c70808;
+    border-left: 4px solid #c70808;
+  }
+  
+  .selected-items h2 {
+  margin-bottom: 10px;
+  font-family: "Arial", sans-serif;
+  color: #c70808; 
+  /* Note : la couleur #c70808 sur fond #c70808 ne sera pas visible 
+     => à ajuster si tu veux qu'il soit lisible (par ex. color: #fff) */
+}
+
+/* Style du texte dans la liste validée */
+.selected-items ul {
+  list-style: inside disc;
+  margin-left: 20px;
+}
+.selected-items ul li {
+  color: #702b3d;                  /* Couleur des items validés */
+  font-family: "Arial", sans-serif; /* Police */
+  font-size: 18px;                 /* Taille de police */
+  margin-bottom: 5px;
+}
+  

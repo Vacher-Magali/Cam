@@ -1,0 +1,95 @@
+:root {
+    --primary-font: 'Atma, serif';
+    --main-text-color: #0f100f;
+    --nav-bg-color: rgba(147, 25, 25, 0.8);
+    --button-bg-color: #0f100f;
+    --button-text-color: #da0e0e;
+    --button-hover-color: #e99211fc;
+  }
+  
+  /* Réinitialisation des marges/padding */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Le body occupe toute la hauteur et a une image de fond */
+  body {
+    min-height: 100vh; 
+    background: url("image/Camellia.jpg") no-repeat center center;
+    background-size: cover;
+  
+    /* On réutilise la variable de police */
+    font-family: var(--primary-font);
+  
+    /* On peut aussi définir une couleur de texte par défaut */
+    color: var(--main-text-color);
+  }
+  
+  /* Titres */
+  h1 {
+    font-family: var(--primary-font);
+    color: var(--main-text-color);
+  }
+  
+  h2 {
+    font-family: var(--primary-font);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Barre de navigation (nav) */
+  nav {
+    position: relative; 
+    display: flex;
+    justify-content: center; /* centre horizontalement le h1 */
+    align-items: center;     /* centre verticalement */
+  
+    /* On utilise la variable de couleur de fond de la nav */
+    background-color: var(--nav-bg-color);
+    padding: 10px 20px;
+  }
+  
+  /* Le titre est naturellement centré par justify-content: center */
+  nav h1 {
+    margin: 0;
+  }
+  
+  /* Bouton dans la nav, en position absolue à droite */
+  nav .btn-enter {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  
+    /* Variables pour la couleur du bouton et du texte */
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+  
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav .btn-enter:hover {
+    background-color: var(--button-hover-color);
+  }
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;     /* centre verticalement */
+    justify-content: center; /* centre horizontalement */
+  }
+  
+  /* Le H2 est désormais réellement au milieu de la page */
+  main h2 {
+    font-size: 2rem;
+    color: #0f100f;
+    text-align: center;
+  }
+  
