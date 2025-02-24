@@ -36,16 +36,21 @@
   /* Conteneur de la liste, encadré en rouge */
   .red-border {
     border: 2px solid #702b3d;      /* bordure rouge */
-    padding: 20px;              /* marge interne */
+    padding: 10px;              /* marge interne */
     width: 30%;                 /* largeur à 50% de la page */
     margin: 0 auto;             /* centre le bloc horizontalement */
     border-radius: 8px;         /* angles arrondis */
 
 }
     label{
-        font-family: 'atma',serif;
-        color: #c70808;
+    font-family: 'atma',serif;
+    color: #c70808;
+    display: inline-flex;
+    align-items: center;    /* Aligne verticalement au centre */
+    gap: 8px; 
 }  
+
+
   /* Bouton "Valider" */
   .btn-validate {
     display: block;             /* pour que margin auto fonctionne */
@@ -64,11 +69,13 @@
   
   /* Zone d'affichage des éléments sélectionnés */
   .selected-items {
-    width: 50%;
+    font-family: 'atma', serif;
+    color: #020000;
+    width: 25%;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #c70808;
-    border-left: 4px solid #c70808;
+    padding: 10px;
+    background-color: #e36b10;
+    border-left: 4px solid #020000;
   }
   
   .selected-items h2 {

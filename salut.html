@@ -1,0 +1,33 @@
+<?php
+session_start();
+// On récupère la liste stockée dans la session (ou un tableau vide si rien)
+$selectedItems = $_SESSION['selectedItems'] ?? [];
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Merci !</title>
+  <link rel="stylesheet" href="salut.css">
+</head>
+<body>
+
+  <!-- Conteneur pour centrer le message -->
+  <div class="container">
+    <!-- Le texte à afficher avec l'effet de frappe -->
+    <h1 class="typing">Merci pour Elle !</h1>
+    </div>
+    <div classe="container">
+     <h2>Vos choix :</h2>
+    <?php if (!empty($selectedItems)): ?>
+          <ul>
+            <?php foreach ($selectedItems as $selected): ?>
+              <li><?php echo htmlspecialchars($selected); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        <?php else: ?>
+          <p>Aucun élément sélectionné.</p>
+        <?php endif; ?>
+    </div>
+</body>
+</html>

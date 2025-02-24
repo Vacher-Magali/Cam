@@ -1,0 +1,47 @@
+/* Mise en page simple : on centre verticalement et horizontalement */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url(image/main.jpg) center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Conteneur pour le texte */
+.container {
+  text-align: center;
+}
+
+li::marker {
+    content: "";
+  }
+
+/* Effet de frappe pour le <h1> */
+.typing {
+    /* Apparence du texte */
+    font-family: 'atma', serif;
+    font-size: 2rem;
+    color: #e26f11;
+    
+    /* Empêche le texte de passer à la ligne et cache le surplus */
+    white-space: nowrap;
+    overflow: hidden;
+  
+    /* Largeur initiale = 0, et on l’anime jusqu’à X caractères */
+    width: 0;
+    animation: typing 4s steps(40, end) forwards;
+  }
+
+/* Animation qui « dévoile » le texte sur 4 secondes, en 40 étapes */
+@keyframes typing {
+    from { width: 0; }
+    to   { width: 50ch; } /* Ajustez selon la longueur de votre texte */
+  }
+
+/* Animation de clignotement du curseur (border-right) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
