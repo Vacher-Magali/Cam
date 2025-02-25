@@ -1,5 +1,5 @@
 :root {
-    --primary-font: 'Atma, serif';
+    --primary-font: 'Atma', serif;
     --main-text-color: #0f100f;
     --nav-bg-color: rgba(147, 25, 25, 0.8);
     --button-bg-color: #0f100f;
@@ -7,8 +7,11 @@
     --button-hover-color: #e99211fc;
   }
   
-  /* Réinitialisation des marges/padding */
-  * {
+  /* 1) html et body à 100% de hauteur */
+  html, body {
+    font-family: 'atma', serif;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,14 +19,14 @@
   
   /* Le body occupe toute la hauteur et a une image de fond */
   body {
-    min-height: 100vh; 
-    background: url("image/Camellia.jpg") no-repeat center center;
+    display: flex;
+    flex-direction: column;
+    
+    /* Image de fond */
+    background: url("image/mar.jpg") no-repeat center center;
     background-size: cover;
   
-    /* On réutilise la variable de police */
     font-family: var(--primary-font);
-  
-    /* On peut aussi définir une couleur de texte par défaut */
     color: var(--main-text-color);
   }
   
@@ -54,17 +57,38 @@
     padding: 30px;
   }
 
+  p {
+    font-family: 'atma', serif;
+  }
+
   .content p {
     font-size: 1.1rem;
-    background-color: rgba(255, 255, 255, 0.5);
     color: #0c0101;
     margin-bottom: 20px;
     font-size: xx-large;
+    border-radius: 7px;
+
+  }
+
+  .content {
+    /* Taille max (pour ne pas trop s'étirer sur grand écran) */
+    max-width: 800px;
+    
+    /* Centrer horizontalement */
+    margin: 40px auto; 
+    
+    /* Fond semi-transparent pour le texte */
+    background-color: rgba(255, 255, 255, 0.5);
+    
+    /* Un peu de padding pour respirer */
+    padding: 20px;
+    
+    /* Coins arrondis */
     border-radius: 8px;
     
+    /* Centrer le texte à l'intérieur, si désiré */
+    text-align: center;
   }
-  
-  
   /* Barre de navigation (nav) */
   nav {
     position: relative; 
@@ -124,5 +148,76 @@
     font-size: 2rem;
     color: #0f100f;
     text-align: center;
+  }
+  
+  /* ======================== */
+/*       MEDIA QUERIES      */
+/* ======================== */
+
+/* Pour les écrans jusqu'à 768px de large (tablettes, etc.) */
+@media (max-width: 768px) {
+
+    /* On peut réduire la taille de police */
+    .content p {
+      font-size: 1.2rem; /* au lieu de xx-large */
+    }
+  
+    /* On peut ajuster le padding pour que ça ne déborde pas */
+    .content {
+      padding: 20px;
+      width: 90%; /* si tu veux que le contenu prenne 90% de la largeur */
+    }
+  
+    /* Le h2, par exemple */
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    /* Le bouton dans la nav peut être plus grand ou plus petit */
+    nav .btn-enter {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+    .red-border {
+        width: 100%;          /* occupe toute la largeur */
+        height: 100%;         /* prend toute la hauteur du conteneur */
+        margin: 0;            /* retire les marges latérales */
+        border-radius: 0;     /* retire les arrondis si tu veux un plein écran net */
+    
+        /* Optionnel : si tu veux centrer le contenu texte/liste en interne */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+  }
+  
+  /* Pour les écrans encore plus petits (jusqu'à 480px, smartphones) */
+  @media (max-width: 480px) {
+  
+    .content p {
+      font-size: 1rem; /* encore un peu plus petit */
+    }
+  
+    h2 {
+      font-size: 1.2rem;
+    }
+  
+    nav .btn-enter {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+    .red-border {
+        /* Idem, ou des réglages plus stricts */
+        width: 100%;
+        height: 100%;
+      }
+      .btn-validate {
+        width: 90%;
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
   }
   

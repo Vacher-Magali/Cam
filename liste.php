@@ -10,17 +10,13 @@ $items = [
     "Bière saveur pêche",
     "Nouilles poulet",
     "Bubble tea B'n Tea: pralino pistache avec billes tapiocas",
-    "Nougat"
+    "Nougat",
+    "moi, qui vois"
 ];
-
-// Tableau pour stocker les éléments sélectionnés
-$selectedItems = [];
 
 // Si le formulaire est soumis
 if (isset($_POST['validate'])) {
-    // On récupère les items cochés (ou un tableau vide s'il n'y en a pas)
     $selectedItems = isset($_POST['items']) ? $_POST['items'] : [];
-    // Ici, on peut ajouter une logique de traitement (ex: enregistrement en BDD)
     $_SESSION['selectedItems'] = $selectedItems;
     header('Location: salut.php');
     exit;
@@ -37,27 +33,53 @@ if (isset($_POST['validate'])) {
 
   <!-- Barre de navigation -->
   <nav>
-    <!-- Lien ou bouton pour retourner à la page d'accueil -->
     <a href="accueil.html" class="btn-return">Accueil</a>
   </nav>
-
+<main>
   <h1>Faites votre choix</h1>
 
-  <!-- Formulaire avec les cases à cocher -->
-  <form action="" method="post">
-    <!-- Conteneur avec bordure rouge -->
-    <div class="red-border">
-      <?php foreach ($items as $item): ?>
-        <label>
-          <input type="checkbox" name="items[]" value="<?php echo htmlspecialchars($item); ?>">
-          <?php echo htmlspecialchars($item); ?>
-        </label>
-        <br>
-      <?php endforeach; ?>
+  <!-- Carte qui va flipper -->
+  <div class="flip-card" id="flipCard">
+    <div class="flip-card-inner" id="flipCardInner">
+      <!-- Face avant (liste) -->
+      <div class="flip-card-front">
+        <form action="" method="post">
+          <div class="red-border">
+            <?php foreach ($items as $item): ?>
+              <label>
+                <input type="radio" name="items[]" value="<?php echo htmlspecialchars($item); ?>">
+                <?php echo htmlspecialchars($item); ?>
+              </label>
+              <br>
+            <?php endforeach; ?>
+            <div class="button-row">
+            <button type="submit" name="validate" class="btn-validate">Valider</button>
+            <button type="button" class="btn-turn" onclick="flipCard()">Ca te dis rien !</button>
+          </div>
+          </div>
+        </form>
+      </div>
+      <!-- Face arrière (description) -->
+      <div class="flip-card-back">
+        <div class="red-border">
+        <h2>Toi qui vois!</h2>
+        <p>Si la liste ne vous inspire pas, voici les préférences de Camellia</p>
+         <p> Fruits: Pêche, fraise, cerise</p>
+         <p> Couleurs: Rouge, noir, violet</p>
+         <p> Manga: Nana, Deadpool</p>
+         <p> Fleurs: Marguerites</p>
+        <button type="button" class="btn-turn" onclick="flipCard()">Bon désolée, j'ai pas plus d'info</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Bouton pour valider la sélection -->
-    <button type="submit" name="validate" class="btn-validate">Valider</button>
-  </form>
+  <!-- Petit script pour toggler la classe flipped -->
+  <script>
+  function flipCard() {
+    const flipCard = document.getElementById('flipCard');
+    flipCard.classList.toggle('flipped');
+  }
+  </script>
+</main>
 </body>
 </html>

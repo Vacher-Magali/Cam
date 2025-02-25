@@ -1,100 +1,291 @@
+/* =========================
+   RESET & BASE
+========================= */
+
+/* Remise à zéro des marges/padding et box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  /* Barre de navigation */
-  nav {
-    background-color: #702b3d;
-    padding: 10px;
+  /* html, body en 100% de hauteur, police par défaut */
+  html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
   }
   
-  /* Bouton/lien retour accueil dans la nav */
+  /* Le body a un fond couvrant et un layout en colonne */
+  body {
+    /* Force la hauteur minimale à la taille de la fenêtre */
+    min-height: 100vh;
+  
+    /* Image centrée, sans répétition, qui couvre toute la zone */
+    background: url("image/bye.jpg") no-repeat center center;
+    background-size: cover;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1; /* occupe l’espace vertical sous la nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* centre horizontalement */
+    justify-content: center; /* centre verticalement */
+    text-align: center;      /* si tu veux centrer le texte */
+    padding: 1rem;           /* marge intérieure */
+  }
+  
+  /* =========================
+     BARRE DE NAVIGATION
+  ========================= */
+  
+  nav {
+    background-color: #702b3d;
+    padding: 0.625rem; /* équivaut à ~10px */
+  }
+  
+  /* Bouton retour */
   .btn-return {
     text-decoration: none;
     color: #ea0707;
     background-color: #070000;
-    padding: 6px 12px;
+    padding: 0.375rem 0.75rem; /* ~6px 12px */
     border-radius: 4px;
     transition: background-color 0.3s;
   }
   .btn-return:hover {
     background-color: #e36b10;
   }
-  body{
-    background: url(image/droite.jpg);
+  
+  /* =========================
+     TITRES & PARAGRAPHES
+  ========================= */
+  
+  /* Titre principal (H1) */
+  h1 {
+    font-family: 'Atma', serif;
+    text-align: center;
+    margin: 1.25rem 0; /* 20px */
+    color: #ea0707;
+    font-size: 2rem; /* ~xx-large */
   }
   
-  /* Titre principal */
-  h1 {
-    text-align: center;
-    margin: 20px 0;
-    color: #702b3d;
+  /* Sous-titre (H2) */
+  h2 {
+    font-family: 'Atma', serif;
+    color: #ea0707;
+    font-size: 1.5rem; 
+    margin-bottom: 1rem;
   }
-
-  /* Conteneur de la liste, encadré en rouge */
+  
+  /* Paragraphes généraux */
+  p {
+    font-family: 'Atma', serif;
+    font-size: 1.125rem; /* ~18px */
+    color: #ea0707;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* =========================
+     LISTE ENCADRÉE (.red-border)
+  ========================= */
+  
   .red-border {
-    border: 2px solid #702b3d;      /* bordure rouge */
-    padding: 10px;              /* marge interne */
-    width: 30%;                 /* largeur à 50% de la page */
-    margin: 0 auto;             /* centre le bloc horizontalement */
-    border-radius: 8px;         /* angles arrondis */
-
-}
-    label{
-    font-family: 'atma',serif;
-    color: #c70808;
+    border: 4px solid #702b3d;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1.875rem; /* 30px */
+    margin: 0 auto;
+    border-radius: 60px;
+    max-width: 600px; /* Largeur max sur grand écran */
+    text-align: left; /* Alignement à gauche */
+  }
+  
+  /* Labels pour les checkboxes */
+  label {
     display: inline-flex;
-    align-items: center;    /* Aligne verticalement au centre */
-    gap: 8px; 
-}  
-
-
-  /* Bouton "Valider" */
-  .btn-validate {
-    display: block;             /* pour que margin auto fonctionne */
-    margin: 20px auto;          /* centre le bouton sous la liste */
-    padding: 10px 16px;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Atma', serif;
+    color: #ea0707;
+    font-size: 1.125rem; /* ~18px */
+    margin-bottom: 0.5rem; /* Espace entre chaque label */
+  }
+  
+  /* =========================
+     BOUTONS
+  ========================= */
+  
+  .btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.625rem; /* 10px */
+    margin: 1.25rem auto; /* 20px */
+    padding: 0.625rem 1rem; /* 10px 16px */
     background-color: #0a0000;
+    border-radius: 4px;
+  }
+  
+  .btn-validate,
+  .btn-turn {
+    background-color: #0a0000; 
     color: #c70808;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
+    padding: 0.5rem 0.75rem; /* 8px 12px */
   }
-  .btn-validate:hover {
+  .btn-validate:hover,
+  .btn-turn:hover {
     background-color: #e36b10;
   }
   
-  /* Zone d'affichage des éléments sélectionnés */
+  /* =========================
+     FLIP CARD (EFFET 3D)
+  ========================= */
+  
+  .flip-card {
+    width: 50%;
+    max-width: 800px;  /* Largeur max sur grand écran */
+    margin: 0 auto;
+    perspective: 1000px; /* Pour l'effet 3D */
+    height: 800px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Quand on ajoute la classe .flipped, on pivote la carte */
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Faces avant et arrière */
+  .flip-card-front,
+  .flip-card-back { 
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Face arrière */
+  .flip-card-back {
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 1.25rem; /* 20px */
+    border-radius: 10px;
+  }
+  
+  /* Style spécifique sur la face arrière si besoin */
+  .flip-card-back .red-border {
+    font-family: 'Atma', serif;
+    color: #c70808;
+    /* etc. */
+  }
+  
+  /* =========================
+     ZONE DES ÉLÉMENTS VALIDÉS
+  ========================= */
+  
   .selected-items {
-    font-family: 'atma', serif;
+    font-family: 'Atma', serif;
     color: #020000;
     width: 25%;
-    margin: 20px auto;
-    padding: 10px;
+    margin: 1.25rem auto; /* 20px */
+    padding: 0.625rem;    /* 10px */
     background-color: #e36b10;
     border-left: 4px solid #020000;
   }
   
   .selected-items h2 {
-  margin-bottom: 10px;
-  font-family: "Arial", sans-serif;
-  color: #c70808; 
-  /* Note : la couleur #c70808 sur fond #c70808 ne sera pas visible 
-     => à ajuster si tu veux qu'il soit lisible (par ex. color: #fff) */
-}
+    margin-bottom: 0.625rem;
+    font-family: "Atma", serif;
+    color: #e36b10;
+  }
+  
+  .selected-items ul {
+    list-style: inside disc;
+    margin-left: 1.25rem; /* 20px */
+  }
+  
+  .selected-items ul li {
+    color: #702b3d;
+    font-family: "Atma", serif;
+    font-size: 1.125rem; /* ~18px */
+    margin-bottom: 0.313rem; /* 5px */
+  }
+  
+  /* =========================
+     MEDIA QUERIES
+  ========================= */
+  
+  /* Écrans <= 768px (tablettes) */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+    }
+    p, label {
+      font-size: 1rem; 
+    }
+    .flip-card {
+      width: 80%;
+    }
+    .red-border {
+      max-width: 500px;
+      padding: 1rem;
+    }
+    .flip-card-front,
+    .flip-card-back {
+      width: 100vw;
+      height: 100vh;
+      margin: 0; 
+      /* etc. */
+    }
+  }
 
-/* Style du texte dans la liste validée */
-.selected-items ul {
-  list-style: inside disc;
-  margin-left: 20px;
-}
-.selected-items ul li {
-  color: #702b3d;                  /* Couleur des items validés */
-  font-family: "Arial", sans-serif; /* Police */
-  font-size: 18px;                 /* Taille de police */
-  margin-bottom: 5px;
-}
+  
+  /* Écrans <= 480px (smartphones) */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    p, label {
+      font-size: 0.9rem; 
+    }
+    .flip-card {
+      width: 90%;
+    }
+    .red-border {
+      max-width: 400px;
+      padding: 0.75rem;
+    }
+    .btn-validate,
+    .btn-turn {
+      font-size: 0.875rem; /* ~14px */
+      padding: 0.5rem 0.625rem;
+    }
+    .flip-card-front,
+    .flip-card-back {
+      width: 100vw;
+      height: 100vh;
+      margin: 0; 
+      /* etc. */
+    }
+
+  }
   
